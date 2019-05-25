@@ -16,6 +16,7 @@ class Reader {
         this.color = options.color ? options.color : "black";
         this.height = options.height ? options.height :20;
         this.position = options.position ? options.position :2;
+        this.dir = 'down';
 
         this.$el = document.createElement("div");
         this.$el.style.width = 0;
@@ -32,10 +33,8 @@ class Reader {
     }
 
     move(position) {
+        this.dir = position > this.position ? 'down' : 'up';
         this.position = position;
-        if (this.reader === null) {
-            throw "reader does not exist";
-        }
         this.$el.style.top = `${this.position}px`;
 
     }
@@ -43,10 +42,11 @@ class Reader {
 
 
 class MixTape {
-    constructor({ tape, songs, nextCallBack, options = {} }) {
+    constructor({ tape, songs, nextCallBack, playCallBack, options = {} }) {
         this.tape = tape;
         this.songs = songs;
         this.nextCallBack = nextCallBack;
+        this.playCallBack = playCallBack;
         this.options = options;
 
         // generate the reader object
@@ -89,7 +89,7 @@ class MixTape {
             if (song.inElementSpan(readerPos) && this.currentSong !== song) {
                 this.currentSong = song;
                 if (typeof this.nextCallBack === 'function' && song.dataset) {
-                    this.nextCallBack(song.dataset);
+                    this.nextCallBack(song.dataset, this.reader.dir);
                 }
             }
         }
@@ -103,6 +103,12 @@ class MixTape {
             // move reader according to parent scroll position
             this.reader.move(a / b * this.tape.getBoundingClientRect().height);
             this.defineCurrentElement();
+
+            // get reader tape percentage
+            const totalPercent = this.reader.position / this.tape.offsetHeight;
+            // get reader song percentage
+            const songPercent = (this.tape.scrollTop + this.reader.position - this.currentSong.position) / this.currentSong.length;
+            this.playCallBack(totalPercent, songPercent);
         });
         // window resize
         window.addEventListener("resize", () => {
