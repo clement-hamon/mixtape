@@ -61,7 +61,7 @@
             this.currentElement = null;
 
             this.calculateSongsPosition();
-            this.defineCurrentElement();
+            this.defineCurrentSong();
             this.addEventListeners();
         }
 
@@ -83,7 +83,7 @@
          * if current element not the same 
          * change it and emit event/callback
          */
-        defineCurrentElement() {
+        defineCurrentSong() {
             let readerPos = this.tape.scrollTop + this.reader.position;
             for (let i = 0; i < this.playlist.length; i++) {
                 let song = this.playlist[i];
@@ -103,7 +103,7 @@
                 var b = this.tape.scrollHeight - this.tape.clientHeight;
                 // move reader according to parent scroll position
                 this.reader.move(a / b * this.tape.getBoundingClientRect().height);
-                this.defineCurrentElement();
+                this.defineCurrentSong();
 
                 // get reader tape percentage
                 const totalPercent = this.reader.position / this.tape.offsetHeight;
@@ -114,7 +114,7 @@
             // window resize
             window.addEventListener("resize", () => {
                 this.calculateSongsPosition();
-                this.defineCurrentElement();
+                this.defineCurrentSong();
                 //@todo move reader 
             });
         }

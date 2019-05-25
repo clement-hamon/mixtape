@@ -1,4 +1,8 @@
-const target = document.getElementById("target");
+const target = document.getElementById('target');
+const counter = document.createElement('h2');
+counter.className = 'counter';
+counter.innerHTML = '0%';
+target.appendChild(counter);
 
 let mixTape = new MixTape(
     {
@@ -10,6 +14,7 @@ let mixTape = new MixTape(
         },
         playCallBack: (totalPercent, songPercent) => {
             console.log(totalPercent, songPercent);
+            counter.innerHTML = Math.floor(songPercent * 100) + '%';
         },
         options: {
             reader: {
