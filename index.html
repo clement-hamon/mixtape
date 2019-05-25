@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./index.js"></script>
+    <title>Document</title>
+    <style>
+        html, body{
+            height:100%;
+            box-sizing: border-box;
+            margin:0;padding:0;
+            } 
+        #tape{
+            width:30vw; font-size: 20px; height: 100%; 
+            overflow: scroll;
+        }
+        .songs{
+            height: 50vw;
+            width: 100%;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="tape">
+        <div class="songs" data-title="toto1">bloc1</div>
+        <div class="songs" data-title="toto2">bloc2</div>
+        <div class="songs" data-title="toto3">bloc3</div>
+        <div class="songs" data-title="toto4">bloc4</div>
+        <div class="songs" data-title="toto5">bloc5</div>
+        <div class="songs" data-title="toto6">bloc6</div>
+    </div>
+    <script>
+        let mixTape = new MixTape(
+            {
+                tape : document.getElementById("tape"), 
+                songs : document.getElementsByClassName("songs"), 
+                nextCallBack : (dataset) => {
+                    console.log(dataset)
+                },
+                playCallBack : (percentage) => {
+                    console.log(percentage);
+                },
+                options : {
+                    reader: {
+                        color : 'red'
+                    }
+                }
+            });
+    </script>
+</body>
+</html>
