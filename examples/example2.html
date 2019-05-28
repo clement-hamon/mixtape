@@ -34,10 +34,19 @@
             display: inline-block;
             border: 1px solid grey;
         }
+        #reader {
+            border-left: 10px solid transparent;
+            border-bottom: 20px solid blue;
+            border-right: 10px solid transparent;
+            position:absolute;
+            top: 30vh;
+            left: 0;
+        }
     </style>
 </head>
 <body>
     <div id="container">
+        <div id="reader"></div>
         <div id="history">
             <div class="chapter" data-chapter="1">1</div>
             <div class="chapter" data-chapter="2">2</div>
@@ -57,8 +66,9 @@
 
         let mixTape = new MixTape(
             {
-                tape: document.getElementById("history"),
-                songs: document.getElementsByClassName("chapter"),
+                $tape: document.getElementById("history"),
+                $songs: document.getElementsByClassName("chapter"),
+                $reader: document.getElementById("reader"),
                 nextCallBack: (dataset, dir) => {
                     console.log(dataset, dir);
                 },
