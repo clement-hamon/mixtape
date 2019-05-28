@@ -37,7 +37,7 @@
             margin: 100px auto 0;
             text-align: center;
             font-size: 40px;
-            color:white;
+            color: white;
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         }
 
@@ -210,7 +210,32 @@
     </div>
     <div id="target">
     </div>
-    <script src="./example1.js"></script>
+    <script>
+        const target = document.getElementById('target');
+        const counter = document.createElement('h2');
+        counter.className = 'counter';
+        counter.innerHTML = '0%';
+        target.appendChild(counter);
+
+        let mixTape = new MixTape(
+            {
+                tape: document.getElementById("tape"),
+                songs: document.getElementsByClassName("songs"),
+                nextCallBack: (dataset, dir) => {
+                    console.log(dataset, dir);
+                    target.style.backgroundImage = `url(${dataset.img})`;
+                },
+                playCallBack: (totalPercent, songPercent) => {
+                    console.log(totalPercent, songPercent);
+                    counter.innerHTML = Math.floor(songPercent * 100) + '%';
+                },
+                options: {
+                    reader: {
+                        color: 'red'
+                    }
+                }
+            });
+    </script>
 </body>
 
 </html>
