@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Example 2</title>
+    <script src="./mixtape.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #container{
+            width: 100vw;
+            height: 100vh;
+        }
+        #history{
+            background-color: #efefef;
+            width: 100%;
+            height: 30%;
+            overflow: auto;
+            white-space: nowrap;
+        }
+        #target{
+            background-color: grey;
+            width: 100%;
+            height: 70%;
+        }
+        .chapter{
+            height: 100%;
+            width: 300px;
+            display: inline-block;
+            border: 1px solid grey;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="history">
+            <div class="chapter" data-chapter="1">1</div>
+            <div class="chapter" data-chapter="2">2</div>
+            <div class="chapter" data-chapter="3">3</div>
+            <div class="chapter" data-chapter="4">4</div>
+            <div class="chapter" data-chapter="5">5</div>
+            <div class="chapter" data-chapter="6">6</div>
+            <div class="chapter" data-chapter="7">7</div>
+            <div class="chapter" data-chapter="8">8</div>
+        </div>
+        <div id="target">
+
+        </div>
+    </div>
+    <script>
+        const target = document.getElementById('target');
+
+        let mixTape = new MixTape(
+            {
+                tape: document.getElementById("history"),
+                songs: document.getElementsByClassName("chapter"),
+                nextCallBack: (dataset, dir) => {
+                    console.log(dataset, dir);
+                },
+                playCallBack: (totalPercent, songPercent) => {
+                    console.log(totalPercent, songPercent);
+                },
+                options: {
+                    orientation: 'horizontal',
+                    reader: {
+                        color: 'blue'
+                    }
+                }
+            });
+    </script>
+</body>
+</html>
