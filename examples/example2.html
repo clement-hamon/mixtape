@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Example 2</title>
+    <title>Les Rois Carolingiens</title>
     <script src="../mixtape.js"></script>
     <style>
         *{
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
         #container{
             width: 100vw;
@@ -18,28 +19,54 @@
         }
         #history{
             background-color: #efefef;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 20px;
             width: 100%;
-            height: 30%;
+            height: 15%;
             overflow: auto;
             white-space: nowrap;
         }
         #target{
             background-color: grey;
             width: 100%;
-            height: 70%;
+            height: 85%;
+            background-repeat: no-repeat;
+            background-position:50% 50%;
+            background-size: cover
         }
-        .chapter{
+        .kings{
             height: 100%;
             width: 300px;
+            color: #efefef;
             display: inline-block;
             border: 1px solid grey;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position:50% 50%;
+        }
+        .king-title{
+            height: 100%;
+            width: 100%;
+            line-height: 15vh;
+            vertical-align: middle;
+            text-align: center;
+            background-color: rgba(0,0,0,0.4);
+        }
+        #king-name{
+            color: #efefef;
+            font-size: 50px;
+        }
+        #target{
+            padding-top: 40px;
+            text-align: center;
         }
         #reader {
-            border-left: 10px solid transparent;
-            border-bottom: 20px solid blue;
-            border-right: 10px solid transparent;
+            width: 0;
+            height: 15vh;
+            border: 1px solid blue;
             position:absolute;
-            top: 30vh;
+            top: 0;
             left: 0;
         }
     </style>
@@ -48,38 +75,92 @@
     <div id="container">
         <div id="reader"></div>
         <div id="history">
-            <div class="chapter" data-chapter="1">1</div>
-            <div class="chapter" data-chapter="2">2</div>
-            <div class="chapter" data-chapter="3">3</div>
-            <div class="chapter" data-chapter="4">4</div>
-            <div class="chapter" data-chapter="5">5</div>
-            <div class="chapter" data-chapter="6">6</div>
-            <div class="chapter" data-chapter="7">7</div>
-            <div class="chapter" data-chapter="8">8</div>
+            <div class="kings" data-img="" data-length="20" data-chapter="Les Rois Carolingiens">
+                <h2 class="king-title">Les Rois Carolingiens</h2>
+            </div>
+            <div class="kings" data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Etienne_II_couronne_P%C3%A9pin-Child%C3%A9ric_III_d%C3%A9pos%C3%A9.jpg/800px-Etienne_II_couronne_P%C3%A9pin-Child%C3%A9ric_III_d%C3%A9pos%C3%A9.jpg" data-length="20" data-chapter="Pepin Le Bref">
+                <h2 class="king-title">Pepin Le Bref</h2>
+            </div>
+            <div class="kings" data-img="https://upload.wikimedia.org/wikipedia/commons/b/b9/Charlemagne_et_Alcuin.jpg" data-length="50" data-chapter="charlemagne">
+                <h2 class="king-title">Charlemagne</h2>
+            </div>
+            <div class="kings" data-img="https://upload.wikimedia.org/wikipedia/commons/1/1a/Ludwik_I_Pobo%C5%BCny.jpg" data-length="25" data-chapter="Louis 1er">
+                <h2 class="king-title">Louis 1er</h2>
+            </div>
+            <div class="kings" data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/%D0%9A%D0%B0%D1%80%D0%BB_%D0%9B%D1%8B%D1%81%D1%8B%D0%B9.jpg/800px-%D0%9A%D0%B0%D1%80%D0%BB_%D0%9B%D1%8B%D1%81%D1%8B%D0%B9.jpg" data-length="40" data-chapter="Charles II">
+                <h2 class="king-title">Charles II</h2>
+            </div>
+            <div class="kings" data-img="https://upload.wikimedia.org/wikipedia/commons/3/3d/Sacre_Louis2_France_02.jpg" data-length="4" data-chapter="Louis II">
+                <h2 class="king-title">Louis II</h2>
+            </div>
+            <div class="kings" data-img="https://upload.wikimedia.org/wikipedia/commons/7/73/Charles_Auguste_Guillaume_Henri_Fran%C3%A7ois_Louis_de_Steuben_-_Louis_III_%28vers_863-882%29_et_Carloman_%28vers_866-884%29.jpg" data-length="7" data-chapter="Louis III">
+                <h2 class="king-title">Louis III</h2>
+            </div>
+            <div class="kings" data-img="https://upload.wikimedia.org/wikipedia/commons/e/ec/Sceau_de_Charles_le_gros.jpg" data-length="5" data-chapter="Charles III Le gros">
+                <h2 class="king-title">Charles III Le gros</h2>
+            </div>
+            <div class="kings" data-img="https://upload.wikimedia.org/wikipedia/commons/d/d3/Eudes%2C_fils_de_%22Robert_Ier_le_Fort%22_et_comte_de_Paris%2C_fut_couronn%C3%A9_roi_de_France_en_888_%C3%A0_Saint-Corneille_de_Compi%C3%A8gne_par_Gauthier%2C_archev%C3%AAque_de_Sens.png" data-length="10" data-chapter="Eudes">
+                <h2 class="king-title">Eudes</h2>
+            </div>
+            <div class="kings" data-img="https://upload.wikimedia.org/wikipedia/commons/e/eb/CharlesIII_le_simple_Jean_de_Tillet-Recueil_des_rois_de_France.jpg" data-length="25" data-chapter="Charles III Le Simple">
+                <h2 class="king-title">Charles III Le Simple</h2>
+            </div>
+            <div class="kings" data-img="https://upload.wikimedia.org/wikipedia/commons/5/5a/Robert_Ier_roi_des_Francs.jpg" data-length="1" data-chapter="Robert 1er">
+                <h2 class="king-title">Robert 1er</h2>
+            </div>
+            <div class="kings" data-img="https://upload.wikimedia.org/wikipedia/commons/c/cd/Rudolph_of_France.jpg" data-length="15" data-chapter="Raoul">
+                <h2 class="king-title">Raoul</h2>
+            </div>
+            <div class="kings" data-img="https://upload.wikimedia.org/wikipedia/commons/c/ce/Couronnement_de_Louis_IV.jpg" data-length="20" data-chapter="Louis IV">
+                <h2 class="king-title">Louis IV</h2>
+            </div>
+            <div class="kings" data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/T%C3%AAte_de_la_statue_du_roi_Lothaire_fab_en_1140.JPG/800px-T%C3%AAte_de_la_statue_du_roi_Lothaire_fab_en_1140.JPG" data-length="30" data-chapter="Lothaire">
+                <h2 class="king-title">Lothaire</h2>
+            </div>
+            <div class="kings" data-img="https://upload.wikimedia.org/wikipedia/commons/5/58/Louis_V_of_France.jpg" data-length="2" data-chapter="Louis V">
+                <h2 class="king-title">Louis V</h2>
+            </div>
         </div>
         <div id="target">
-
+            <h1 id="king-name"></h1>
+            <p id="king-bio"></p>
         </div>
     </div>
     <script>
-        const target = document.getElementById('target');
+        const $target = document.getElementById('target');
+        const $kingsName = document.getElementById('king-name');
+        const $kingsBio = document.getElementById('king-bio');
+
+        const kings = []
+        kings["Charlemagne"] = {
+            text: `En 768, Charlemagne succède à son père, Pépin le Bref, mais doit, en vertu d'une veille coutume franque, partager le royaume de son père avec son frère aîné, Carloman. Charles reçoit la plus mauvaise part : une bande étroite qui s'étend du Pays basque à la Frise (littoral de la Mer du Nord). À la mort prématurée de Carloman, il s'empare de ses terres et force ses neveux à fuir en Italie. En 772, il entame une longue et pénible guerre contre les Saxons qui se soumettent et se rebellent à plusieurs reprises. En 773, il reçoit un appel à l'aide du pape qui est attaqué par les Lombards : Charles accourt et conquiert progressivement ce royaume. Il se fait couronner roi de Lombardie (774). Quatre ans plus tard, il reçoit les émissaires de chefs sarrasins qui, révoltés contre l'émir de Cordoue, sollicitent son aide. Charles accepte, passe les Pyrénées avec une armée, prend quelques villes mais échoue devant Saragosse. Apprenant une révolte des Saxons, il fait demi-tour mais son arrière garde est massacrée à Roncevaux. Après avoir maté la révolte des Saxons, il soumet la Bretagne et réclame un tribut aux peuples situés à l'est de la Germanie.
+        Le 25 décembre 800, il est couronné empereur d'Occident par le pape Léon III. Il fut élu roi en 751. Il meurt en 814.`};
+
+        const $kings = document.getElementsByClassName("kings");
+
+        for (let i = 0; i < $kings.length; i++) {
+            const $king = $kings[i];
+            $king.style.width = `${Math.floor($king.dataset.length) * 20}px`;
+            $king.style.backgroundImage = `url(${$king.dataset.img})`;
+        }
+
+        // MIXTAPE LIBRARY CODE ==============================================
 
         let mixTape = new MixTape(
             {
                 $tape: document.getElementById("history"),
-                $songs: document.getElementsByClassName("chapter"),
+                $songs: document.getElementsByClassName("kings"),
                 $reader: document.getElementById("reader"),
                 nextCallBack: (dataset, dir) => {
-                    console.log(dataset, dir);
+                    $target.style.backgroundImage = `url(${dataset.img})`;
+                    $kingsName.innerHTML = dataset.chapter;
+                    $kingsBio.innerText = kings[dataset.chapter] ? kings[dataset.chapter].text : "";
                 },
                 playCallBack: (totalPercent, songPercent) => {
-                    console.log(totalPercent, songPercent);
+                    $target.style.backgroundPosition = `50% ${Math.floor(songPercent * 100)}%`;
                 },
                 options: {
-                    orientation: 'horizontal',
-                    reader: {
-                        color: 'blue'
-                    }
+                    orientation: 'horizontal'
                 }
             });
     </script>
